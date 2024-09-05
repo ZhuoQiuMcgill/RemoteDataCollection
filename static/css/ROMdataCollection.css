@@ -22,6 +22,12 @@ body {
 
 }
 
+#function-container {
+    width: 35%;
+    height: 100%;
+    border: 1px solid #cccccc;
+}
+
 
 .column {
     width: 30%;
@@ -38,8 +44,25 @@ body {
     height: 20%;
 }
 
-#indexed_prev_sent, #indexed_cur_sent{
+#indexed_prev_sent,
+#indexed_cur_sent{
     background-color: #e5e5e5;
+}
+
+
+#indexed_prev_sent,
+#indexed_cur_sent {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 20px;
+    resize: none;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-y: auto;
 }
 
 textarea {
@@ -52,4 +75,23 @@ textarea {
     resize: none;
     overflow-wrap: break-word;
     word-wrap: break-word;
+}
+
+button {
+    padding: 10px;
+    background-color: #1f1f1f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #204801;
+}
+
+#RunIndexingButton {
+    width: 60%;
+    height: 5%;
 }
