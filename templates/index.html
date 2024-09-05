@@ -3,13 +3,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="{% static 'js/app.js' %}" defer></script>
 </head>
 <body>
-    <h1>Welcome to My Django Homepage</h1>
-    <button onclick="displayMessage()">Click Me!</button>
-    <div id="message"></div>
+    <div class="container">
+        <h1>Welcome to the Index Page</h1>
+        <button onclick="location.href='{% url 'rom_data_collection' %}'">Go to ROM Data Collection</button>
+    </div>
 </body>
 </html>

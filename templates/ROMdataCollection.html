@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Boxes Layout</title>
+    <!-- 正确引用 CSS 文件 -->
+    <link rel="stylesheet" href="{% static 'css/ROMdataCollection.css' %}">
+</head>
+<body>
+<div class="container">
+    <!-- Left Column with Editable Text Areas -->
+    <div class="column">
+        <textarea placeholder="previous sentences" id="prev_sent_text_input" class="prev_text"></textarea>
+        <textarea placeholder="current sentences" id="cur_sent_text_input" class="cur_text"></textarea>
+    </div>
+
+    <!-- Right Column with Read-Only Text Areas -->
+    <div class="column">
+        <textarea placeholder="" readonly id="indexed_prev_sent" class="prev_text"></textarea>
+        <textarea placeholder="" readonly id="indexed_cur_sent" class="cur_text"></textarea>
+    </div>
+</div>
+
+</body>
+</html>

@@ -19,4 +19,5 @@ from . import views
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
+    path('romdata/', views.rom_data_collection, name='rom_data_collection'),
 ]
