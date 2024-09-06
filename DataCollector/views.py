@@ -23,7 +23,9 @@ def submit_texts(request):
         return JsonResponse({'status': 'success',
                              'message': 'Texts received successfully!',
                              'indexed_prev_text': indexed_previous_text_content_with_highlight,
-                             'indexed_cur_text': indexed_cur_text_content_with_highlight
+                             'indexed_cur_text': indexed_cur_text_content_with_highlight,
+                             'prev_possible_tokens': indexed_previous_text.get_possible_tokens(),
+                             'cur_possible_tokens': indexed_cur_text.get_possible_tokens()
                              })
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})

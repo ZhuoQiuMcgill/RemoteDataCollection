@@ -57,9 +57,27 @@ document.addEventListener('DOMContentLoaded', function ()
 
     function processingData(data)
     {
+        console.log(data);
         const indexed_prev_sent = document.getElementById('indexed_prev_sent');
         const indexed_cur_sent = document.getElementById('indexed_cur_sent');
         indexed_prev_sent.innerHTML = data['indexed_prev_text'];
         indexed_cur_sent.innerHTML = data['indexed_cur_text'];
+
+        const prev_sent_dropdown = document.getElementById('prev_sent_possible_tokens');
+        const cur_sent_dropdown = document.getElementById('cur_sent_possible_tokens');
+        createDropDown(data['prev_possible_tokens'], prev_sent_dropdown);
+        createDropDown(data['cur_possible_tokens'], cur_sent_dropdown);
+
+    }
+
+    function createDropDown(tokens, dropdown)
+    {
+        dropdown.innerHTML = '';
+        tokens.forEach(token => {
+            const option = document.createElement('option');
+            option.value = token;
+            option.text = token;
+            dropdown.appendChild(option);
+        })
     }
 });

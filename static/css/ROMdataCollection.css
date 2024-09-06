@@ -23,11 +23,31 @@ body {
 }
 
 #function-container {
+    display: flex;
     width: 35%;
     height: 100%;
     border: 1px solid #cccccc;
+    justify-content: center;
+    flex-direction: column;
+
 }
 
+#mapping-container {
+    display: flex;
+    width: 90%;
+    height: 70%;
+    margin: 20px;
+    justify-content: center;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+#dropdown-container {
+    width: 90%;
+    height: 25%;
+    margin: 20px;
+}
 
 .column {
     width: 30%;
@@ -85,6 +105,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 button:hover {
@@ -95,3 +117,40 @@ button:hover {
     width: 60%;
     height: 5%;
 }
+
+/* 为所有具有 .dropdown 类的下拉菜单设置样式 */
+.dropdown {
+    width: 90%; /* 设置宽度以与其他表单元素保持一致 */
+    padding: 10px; /* 添加内边距以提高可用性 */
+    margin-bottom: 10px; /* 添加底部外边距与整体布局一致 */
+    border: 1px solid #ccc; /* 设置边框样式，与其他元素一致 */
+    border-radius: 4px; /* 添加圆角以保持一致的外观 */
+    font-size: 16px; /* 设置字体大小，确保可读性 */
+    background-color: white; /* 设置背景颜色，与整体风格一致 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加轻微阴影，提升视觉效果 */
+    color: #333; /* 字体颜色 */
+    appearance: none; /* 移除默认的浏览器样式（可选） */
+}
+
+/* 鼠标悬停时的样式 */
+.dropdown:hover {
+    border-color: #888; /* 鼠标悬停时改变边框颜色 */
+}
+
+/* 聚焦时的样式 */
+.dropdown:focus {
+    outline: none; /* 去除默认的焦点样式 */
+    border-color: #204801; /* 聚焦时的边框颜色 */
+    box-shadow: 0 0 5px rgba(32, 72, 1, 0.3); /* 添加聚焦时的阴影 */
+}
+
+/* 为说明文字添加样式 */
+.dropdown-label {
+    display: block; /* 将标签设置为块级元素 */
+    margin-top: 10px;
+    margin-bottom: 10px; /* 下方外边距 */
+    font-size: 16px; /* 字体大小 */
+    color: #333; /* 字体颜色 */
+    font-weight: bold; /* 加粗字体 */
+}
+
