@@ -56,10 +56,17 @@ body {
     width: 90%;
     height: 70%;
     margin: 20px;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
+}
+
+#mapping-button-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 #dropdown-container {
@@ -135,6 +142,28 @@ button {
     margin-bottom: 10px;
 }
 
+.delete-button {
+    background-color: #000000;
+    margin-left: 20px;
+    height: 50%;
+    aspect-ratio: 1 / 1; /* 确保按钮宽高相等 */
+    display: inline-flex; /* 内联块显示 */
+    justify-content: center; /* 居中对齐 */
+    align-items: center; /* 居中对齐 */
+    border: none; /* 移除默认边框 */
+    color: white; /* 按钮文字颜色 */
+    cursor: pointer; /* 鼠标悬停时显示手形指针 */
+}
+
+
+.delete-button:hover {
+    background-color: #ff0101;
+}
+
+
+
+
+
 button:hover {
     background-color: #204801;
 }
@@ -143,11 +172,14 @@ button:hover {
     padding: 2%;
     width: 60%;
     height: 6%;
+
+    display: flex;
+    justify-content: center;
 }
 
 /* 为所有具有 .dropdown 类的下拉菜单设置样式 */
 .dropdown {
-    width: 90%; /* 设置宽度以与其他表单元素保持一致 */
+    width: 100%; /* 设置宽度以与其他表单元素保持一致 */
     padding: 10px; /* 添加内边距以提高可用性 */
     margin-bottom: 10px; /* 添加底部外边距与整体布局一致 */
     border: 1px solid #ccc; /* 设置边框样式，与其他元素一致 */
@@ -180,4 +212,18 @@ button:hover {
     color: #333; /* 字体颜色 */
     font-weight: bold; /* 加粗字体 */
 }
+
+.mapping-item {
+    width: 90%;
+    height: 8%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
 
