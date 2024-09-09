@@ -22,6 +22,25 @@ body {
 
 }
 
+#column-container {
+    display: flex;
+    width: 60%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#textarea-container {
+    display: flex;
+    width: 100%;
+    height: 92%;
+    justify-content: center;
+    flex-direction: row;
+}
+
 #function-container {
     display: flex;
     width: 35%;
@@ -56,11 +75,19 @@ body {
     gap: 15px;
 }
 
+.textarea-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
 .prev_text {
-    height: 60%;
+    height: 70%;
 }
 .cur_text{
-    height: 20%;
+    height: 25%;
 }
 
 #indexed_prev_sent,
@@ -113,8 +140,9 @@ button:hover {
 }
 
 #RunIndexingButton {
+    padding: 2%;
     width: 60%;
-    height: 5%;
+    height: 6%;
 }
 
 /* 为所有具有 .dropdown 类的下拉菜单设置样式 */
