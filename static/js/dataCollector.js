@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function ()
     const prev_sent_dropdown = document.getElementById('prev_sent_possible_tokens');
     const cur_sent_dropdown = document.getElementById('cur_sent_possible_tokens');
     const mappingContainer = document.getElementById('mapping-container');
+    let indexedPrevText = '';
+    let indexedCurText = '';
 
     submitButton.addEventListener('click', function ()
     {
@@ -22,18 +24,25 @@ document.addEventListener('DOMContentLoaded', function ()
         };
 
         // 发送 POST 请求到后端
-        fetch('/submit_texts/', {  // URL 对应后端视图
+        fetch('/submit_texts/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')  // Django 需要 CSRF 令牌
+                'X-CSRFToken': getCookie('csrftoken')
             },
             body: JSON.stringify(data)
         })
             .then(response => response.json())
             .then(data =>
             {
-                processingData(data)
+                if (data['status'] === 'success')
+                {
+                    processingData(data);
+                } else
+                {
+                    alert(data['message']);
+                }
+
             })
             .catch((error) =>
             {
@@ -47,6 +56,47 @@ document.addEventListener('DOMContentLoaded', function ()
         let prev_word = prev_sent_dropdown.options[prev_sent_dropdown.selectedIndex].text;
         let cur_word = cur_sent_dropdown.options[cur_sent_dropdown.selectedIndex].text;
         addMapping(prev_word, cur_word);
+    });
+
+    saveButton.addEventListener('click', function ()
+    {
+        const mappingElements = document.querySelectorAll('#mapping-container .mapping-item');
+
+        const mappings = Array.from(mappingElements).map(element => ({
+            prev_word: element.getAttribute('prev_word'),
+            cur_word: element.getAttribute('cur_word'),
+            mapping_data: element.getAttribute('mapping-data'),
+        }));
+
+        const data = {
+            indexed_prev_text: indexedPrevText,
+            indexed_cur_text: indexedCurText,
+            mappings: mappings
+        }
+
+        fetch('/save-mappings/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data =>
+            {
+                if (data.success)
+                {
+                    alert('Mappings saved successfully!');
+                } else
+                {
+                    alert('Failed to save mappings. Please try again.');
+                }
+            })
+            .catch(error =>
+            {
+                console.error('Error:', error);
+            });
     });
 
     function addMapping(prev_word, cur_word)
@@ -114,7 +164,11 @@ document.addEventListener('DOMContentLoaded', function ()
 
     function processingData(data)
     {
-        console.log(data);
+        cleanMappingDiv();
+
+        console.log(data.indexed_text.prev_text);
+        indexedPrevText = data.indexed_text.prev_text;
+        indexedCurText = data.indexed_text.cur_text;
 
         indexed_prev_sent.innerHTML = data['indexed_prev_text'];
         indexed_cur_sent.innerHTML = data['indexed_cur_text'];
@@ -134,6 +188,11 @@ document.addEventListener('DOMContentLoaded', function ()
             option.text = token;
             dropdown.appendChild(option);
         })
+    }
+
+    function cleanMappingDiv()
+    {
+        mappingContainer.innerHTML = "";
     }
 
     // 获取 CSRF 令牌的函数

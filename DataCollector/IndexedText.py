@@ -36,8 +36,8 @@ class IndexedText:
         sents = self.divide_sentences()
 
         for i, sent in enumerate(sents):
-            doc = self.nlp(sent)
-            indexed_tokens = []
+            doc                           = self.nlp(sent)
+            indexed_tokens                = []
             indexed_tokens_with_highlight = []
             for token in doc:
                 if token.text not in self.punc:

@@ -1,0 +1,2 @@
+USE rom_data_collection;
+DROP TABLE ChatGPT4o_Finetune_Data;
