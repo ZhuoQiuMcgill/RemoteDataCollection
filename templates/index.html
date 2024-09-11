@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="{% static 'js/app.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to the Index Page</h1>
-        <button onclick="location.href='{% url 'rom_data_collection' %}'">Go to ROM Data Collection</button>
+<div class="container">
+    <div id="main-container">
+        <h1 id="main-text">Welcome to Data Collection Center</h1>
+        <div id="button-container">
+            <button class="data-collection-button" onclick="location.href='{% url 'rom_data_collection' %}'">ROM Data
+                Collection
+            </button>
+        </div>
     </div>
+
+</div>
 </body>
 </html>

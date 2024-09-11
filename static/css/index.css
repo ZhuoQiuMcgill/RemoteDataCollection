@@ -1,0 +1,85 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-container {
+    width: 90%;
+    height: 90%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#button-container {
+    display: flex; /* 使用Flexbox布局 */
+    flex-wrap: wrap; /* 自动换行 */
+
+
+    border-radius: 6px; /* 保留原来的圆角 */
+    border: 1px solid #ccc; /* 保留原来的边框颜色 */
+    background-color: #f9f9f9; /* 设置浅灰色背景 */
+
+    padding: 2%; /* 使用百分比的内边距，适应不同屏幕大小 */
+    gap: 2%; /* 使用百分比的间距，确保按钮之间的距离随页面大小变化 */
+
+    min-width: 60%; /* 保留原来的最小宽度 */
+    min-height: 40%; /* 保留原来的最小高度 */
+    box-shadow: 0 2% 5% rgba(0, 0, 0, 0.05); /* 使用百分比的阴影，保持现代感 */
+}
+
+
+
+.data-collection-button {
+    height: 48%;
+    aspect-ratio: 1 / 1;
+    margin: 1%;
+    background-color: #4a90e2; /* 按钮的主色调 */
+    color: #fff; /* 字体颜色为白色 */
+    border: none; /* 无边框 */
+    border-radius: 8px; /* 圆角 */
+    padding: 12px 24px; /* 内边距 */
+    font-size: 16px; /* 字体大小 */
+    font-weight: 600; /* 字体加粗 */
+    cursor: pointer; /* 鼠标悬浮时显示手形 */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 动画过渡效果 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加轻微阴影 */
+}
+
+.data-collection-button:hover {
+    background-color: #357ABD; /* 悬停时改变背景色 */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* 悬停时增加阴影 */
+}
+
+.data-collection-button:active {
+    background-color: #2c6aa5; /* 按下时改变背景色 */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* 按下时减小阴影 */
+}
+
+.data-collection-button:focus {
+    outline: none; /* 去掉聚焦时的边框 */
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.3); /* 聚焦时添加外边框阴影 */
+}
+
+#main-text {
+    font-size: 3.5rem; /* 设置较大的字体大小 */
+    font-weight: 700; /* 加粗字体，使标题更突出 */
+    text-align: center; /* 文本居中对齐 */
+    margin: 4% 0; /* 使用百分比设置上下边距，防止页面缩放时出现问题 */
+    line-height: 1.2; /* 设置较紧凑的行高 */
+
+    background: linear-gradient(90deg, #000000, #3939f5); /* 渐变文字颜色 */
+    -webkit-background-clip: text; /* 仅显示文字部分的渐变 */
+    -webkit-text-fill-color: transparent; /* 设置文字填充为透明色，显示背景渐变 */
+
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* 添加轻微的阴影，使文字更具层次感 */
+    padding: 1%; /* 添加一点内边距，使文字与边缘保持距离 */
+}
