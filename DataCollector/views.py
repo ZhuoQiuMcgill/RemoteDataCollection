@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .IndexedText import *
+from .DB_Manger import *
 
 
 @csrf_exempt
@@ -62,6 +63,7 @@ def save_mappings(request):
 
                 print(f'Saving mapping: {prev_word} -> {cur_word} with data: {mapping_data}')
 
+            DB_Manager.insert_data_to_finetune_database(indexed_prev_text, indexed_cur_text, mapping_list)
             return JsonResponse({'success': True})
 
         except json.JSONDecodeError:
