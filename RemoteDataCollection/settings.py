@@ -38,6 +38,24 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
+# 读取 connection_info.txt 文件
+def read_db_info(file_path):
+    db_info = {}
+    with open(file_path, 'r') as file:
+        for line in file:
+            key, value = line.strip().split('=')
+            db_info[key] = value
+    return db_info
+
+
+# 获取文件路径
+base_dir = os.path.dirname(os.path.abspath(__file__))
+connection_info_file = os.path.join(base_dir, 'connection_info.txt')
+
+# 读取数据库信息
+db_info = read_db_info(connection_info_file)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -87,10 +105,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rom_data_collection',
-        'USER': 'zhuo',
-        'PASSWORD': '1120',
-        'HOST': '3.99.145.14',
-        'PORT': '6002',
+        'USER': db_info.get('USER'),
+        'PASSWORD': db_info.get('PASSWORD'),
+        'HOST': db_info.get('HOST'),
+        'PORT': db_info.get('PORT'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         },
