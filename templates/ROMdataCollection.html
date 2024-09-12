@@ -16,7 +16,7 @@
             <!-- Left Column with Editable Text Areas -->
             <div class="textarea-column">
                 <textarea placeholder="previous sentences" id="prev_sent_text_input" class="prev_text"></textarea>
-                <textarea placeholder="current sentences" id="cur_sent_text_input" class="cur_text"></textarea>
+                <textarea placeholder="new sentences" id="cur_sent_text_input" class="cur_text"></textarea>
 
             </div>
 
@@ -24,7 +24,7 @@
             <div class="textarea-column">
                 <div placeholder="previous sentences" contenteditable="false" id="indexed_prev_sent"
                      class="prev_text"></div>
-                <div placeholder="current sentences" contenteditable="false" id="indexed_cur_sent"
+                <div placeholder="new sentences" contenteditable="false" id="indexed_cur_sent"
                      class="cur_text"></div>
             </div>
 
@@ -35,12 +35,12 @@
 
     <div id="function-container">
         <div id="dropdown-container">
-            <label for="cur_sent_possible_tokens" class="dropdown-label">Current Sentence Tokens:</label>
-            <select id="cur_sent_possible_tokens" class="dropdown">
-            </select>
-
             <label for="prev_sent_possible_tokens" class="dropdown-label">Previous Sentence Tokens:</label>
             <select id="prev_sent_possible_tokens" class="dropdown">
+            </select>
+
+            <label for="cur_sent_possible_tokens" class="dropdown-label">New Sentence Tokens:</label>
+            <select id="cur_sent_possible_tokens" class="dropdown">
             </select>
 
             <div id="mapping-button-container">

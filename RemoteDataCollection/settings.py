@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-7m-zy@pz3v4e$1+jfmf46%cu5)swd8hi15cf!61an5ru!dtkp2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.99.145.14']
+ALLOWED_HOSTS = ['3.99.145.14', '127.0.0.1']
 
 
 # 读取 connection_info.txt 文件
