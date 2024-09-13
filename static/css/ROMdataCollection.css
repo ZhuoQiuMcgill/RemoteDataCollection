@@ -1,12 +1,38 @@
+:root {
+    --primary-color: #1f2937; /* 深色主色调，用于最外层的框 */
+    --secondary-color: #4ade80; /* 较浅的绿色调，用于第二层的框 */
+    --background-color: #f9fafb; /* 整体页面的背景色，浅灰色调 */
+    --accent-color: #3b82f6; /* 强调色，蓝色用于按钮或图标 */
+    --text-color: #111827; /* 深灰色文本颜色，确保可读性 */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* 阴影颜色，提供柔和的深度 */
+}
+
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--primary-color);
+    background-image: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 40%), /* 调整后的高光 */ radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 50%); /* 调整后的次高光 */
+    border-radius: 20px; /* 可选：增加圆角使其更有质感 */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2), /* 调整后的内部光线反射 */ 0 5px 15px rgba(0, 0, 0, 0.1); /* 调整后的外部阴影 */
+    position: relative; /* 确保伪元素位置正确 */
+    overflow: hidden; /* 隐藏溢出 */
+    font-family: Arial, sans-serif ;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 30%); /* 调整伪元素的光点大小和亮度 */
+    mix-blend-mode: screen; /* 混合模式，增加光泽效果 */
+    pointer-events: none; /* 避免影响点击事件 */
 }
 
 .container {
@@ -94,13 +120,14 @@ body {
 .prev_text {
     height: 70%;
 }
-.cur_text{
+
+.cur_text {
     height: 25%;
 }
 
 #indexed_prev_sent,
-#indexed_cur_sent{
-    background-color: #e5e5e5;
+#indexed_cur_sent {
+    background-color: #c0c1c4;
 }
 
 
@@ -133,7 +160,7 @@ textarea {
 
 button {
     padding: 10px;
-    background-color: #1f1f1f;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -144,7 +171,7 @@ button {
 }
 
 .delete-button {
-    background-color: #000000;
+    background-color: var(--primary-color);
     margin-left: 20px;
     height: 50%;
     aspect-ratio: 1 / 1; /* 确保按钮宽高相等 */
@@ -162,11 +189,8 @@ button {
 }
 
 
-
-
-
 button:hover {
-    background-color: #204801;
+    background-color: var(--accent-color);
 }
 
 #RunIndexingButton {
@@ -215,7 +239,7 @@ button:hover {
 }
 
 .mapping-item {
-    width: 90%;
+    width: 92%;
     height: 8%;
     margin-top: 2%;
     display: flex;
@@ -224,7 +248,8 @@ button:hover {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f9f9f9;
+    background-color: var(--primary-color);
+    color: var(--background-color);
 }
 
 
