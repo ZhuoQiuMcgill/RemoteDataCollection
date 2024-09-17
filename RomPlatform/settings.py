@@ -78,7 +78,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'RemoteDataCollection.urls'
+ROOT_URLCONF = 'RomPlatform.urls'
 
 TEMPLATES = [
     {
