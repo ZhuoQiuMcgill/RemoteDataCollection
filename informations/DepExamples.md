@@ -1,7 +1,7 @@
 ### Relation Types:
 ```python
 class RelationType(IntEnum):
-    Object = 0,
+    NONE = 0,
     ConstraintRelation = 1,
     EqualRelation = 2,
     PlainConnectionRelation = 3,
