@@ -29,52 +29,65 @@ spaCy 使用了通用词性标签（Universal POS Tags），以下是完整列�
 
 spaCy 使用了基于 Universal Dependencies 的依存关系标签，以下是可能的标签列表：
 
-- **acl**：限定性从句修饰语
-- **acomp**：表语补足语
-- **advcl**：状语从句
-- **advmod**：状语修饰语
-- **agent**：施事
-- **amod**：形容词修饰语
-- **appos**：同位语
-- **attr**：表语
-- **aux**：助动词
-- **auxpass**：被动助动词
-- **case**：格标记
-- **cc**：并列连词
-- **ccomp**：补语从句
-- **compound**：复合词
-- **conj**：并列结构
-- **cop**：系动词
-- **csubj**：从句主语
-- **csubjpass**：被动从句主语
-- **dative**：与格
-- **dep**：未标注的依存关系
-- **det**：限定词
-- **dobj**：直接宾语
-- **expl**：存在词
-- **intj**：感叹词
-- **mark**：从属连词
-- **meta**：元数据
-- **neg**：否定词
-- **nmod**：名词修饰语
-- **npadvmod**：名词短语状语修饰语
-- **nsubj**：名词主语
-- **nsubjpass**：被动名词主语
-- **nummod**：数词修饰语
-- **oprd**：宾语补足语
-- **parataxis**：并列关系
-- **pcomp**：介词补语
-- **pobj**：介词宾语
-- **poss**：所有格修饰语
-- **preconj**：前置并列连词
-- **predet**：前限定词
-- **prep**：介词
-- **prt**：小品词
-- **punct**：标点符号
-- **quantmod**：数量修饰语
-- **relcl**：关系从句
-- **root**：根节点
-- **xcomp**：开放性补足语
+1. **acl**: 形容词子句修饰（adjectival clause modifier）
+2. **acomp**: 形容词补语（adjectival complement）
+3. **advcl**: 副词子句修饰（adverbial clause modifier）
+4. **advmod**: 副词修饰（adverbial modifier）
+5. **agent**: 施动者（agent）
+6. **amod**: 形容词修饰（adjectival modifier）
+7. **appos**: 同位语（appositional modifier）
+8. **attr**: 属性（attribute）
+9. **aux**: 助动词（auxiliary）
+10. **auxpass**: 被动助动词（passive auxiliary）
+11. **case**: 介词或格标记（case marking）
+12. **cc**: 并列连词（coordinating conjunction）
+13. **ccomp**: 补语从句（clausal complement）
+14. **compound**: 复合词（compound）
+15. **conj**: 并列（conjunct）
+16. **cop**: 系动词（copula）
+17. **csubj**: 从句主语（clausal subject）
+18. **csubjpass**: 从句被动主语（clausal passive subject）
+19. **dative**: 与格补语（dative）
+20. **dep**: 未分类依存关系（unspecified dependency）
+21. **det**: 限定词（determiner）
+22. **dobj**: 直接宾语（direct object）
+23. **expl**: 语势词（expletive）
+24. **fixed**: 固定表达（fixed expression）
+25. **flat**: 扁平结构（flat）
+26. **goeswith**: 缺失单词的同伴（goes with）
+27. **iobj**: 间接宾语（indirect object）
+28. **intj**: 感叹词（interjection）
+29. **list**: 列表（list）
+30. **mark**: 从句标记（marker）
+31. **meta**: 元数据（meta modifier）
+32. **neg**: 否定标记（negation modifier）
+33. **nmod**: 名词修饰语（nominal modifier）
+34. **npadvmod**: 名词短语副词修饰语（noun phrase as adverbial modifier）
+35. **nsubj**: 名词主语（nominal subject）
+36. **nsubjpass**: 名词被动主语（passive nominal subject）
+37. **num**: 数词（numeric modifier）
+38. **number**: 数词成分（element of compound number）
+39. **nummod**: 数量修饰（numeric modifier）
+40. **oprd**: 开放补语（object predicate）
+41. **obj**: 宾语（object）
+42. **obl**: 非核心成分（oblique nominal）
+43. **orphan**: 孤立成分（orphan）
+44. **parataxis**: 并列语法（parataxis）
+45. **pcomp**: 介词补语（complement of a preposition）
+46. **pobj**: 介词宾语（object of a preposition）
+47. **poss**: 所有格修饰语（possessive modifier）
+48. **preconj**: 前置并列连词（pre-correlative conjunction）
+49. **predet**: 前置限定词（pre-determiner）
+50. **prep**: 介词修饰（prepositional modifier）
+51. **prt**: 小品词（particle）
+52. **punct**: 标点（punctuation）
+53. **quantmod**: 量词修饰语（modifier of quantifier）
+54. **relcl**: 关系从句修饰语（relative clause modifier）
+55. **reparandum**: 修正成分（reparandum）
+56. **root**: 根节点（root）
+57. **vocative**: 呼语（vocative）
+58. **xcomp**: 开放补语（open clausal complement）
+
 
 ## 参考资料
 
