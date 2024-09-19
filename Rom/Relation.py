@@ -2,13 +2,16 @@ from enum import IntEnum
 
 
 class RelationType(IntEnum):
-    Object = 0,
+    NONE = 0,
     ConstraintRelation = 1,
     EqualRelation = 2,
     PlainConnectionRelation = 3,
     ConnectionRelation = 4,
     PredicateRelation = 5,
     PlainPredicateRelation = 6,
+
+    def __str__(self):
+        return self.name
 
 
 class Relation:
@@ -34,14 +37,14 @@ class Relation:
         self.to_object = to_object
         self.relation_type = relation_type
 
-    def __repr__(self):
+    def __str__(self):
         """
         Returns a string representation of the Relation object.
 
         Returns:
             str: A string that describes the relation including its from and to objects' OData and relation type name.
         """
-        return f"Relation <{self.from_object.OData}, {self.to_object.OData}> -> {self.relation_type.name}"
+        return f"Relation <{self.from_object.get_text()}, {self.to_object.get_text()}> -> {self.relation_type}"
 
     def set_from_object(self, obj):
         """
@@ -135,6 +138,3 @@ class Relation:
             self.from_object.remove_relation(self)
         if self.to_object:
             self.to_object.remove_relation(self)
-
-
-

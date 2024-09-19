@@ -1,8 +1,8 @@
-from Rom.Relation import Relation, RelationType
+from Relation import Relation, RelationType
 
 
 class RomObject:
-    def __init__(self, text=None, pos=None):
+    def __init__(self, token):
         """
         Initializes a new instance of RomObject.
 
@@ -10,10 +10,21 @@ class RomObject:
             text (str, optional): The text associated with the object. Defaults to None.
             pos (str, optional): The part-of-speech tag associated with the object. Defaults to None.
         """
-        self._text = text
-        self._pos = pos
+        self._token = token
+        self._text = token.text
+        self._pos = token.pos_
+        self._dep = token.dep_
         self.relation_set = set()
         self._is_destroyed = False
+
+    def __str__(self):
+        result = f'<Text: {self._text}, POS: {self._pos}\nRelations:\n'
+        for relation in self.relation_set:
+            result += str(relation) + '\n'
+        return result + '>\n'
+
+    def __repr__(self):
+        return self.__str__()
 
     def get_text(self):
         """
@@ -105,6 +116,16 @@ class RomObject:
             bool: True if the object is destroyed, False otherwise.
         """
         return self._is_destroyed
+
+    def find_relation_with(self, obj):
+        if obj is self:
+            return RelationType.NONE
+
+        for rel in self.relation_set:
+            if self is rel.get_from_object() and obj is rel.get_to_object():
+                return rel.get_relation_type()
+
+        return RelationType.NONE
 
 
 class RomObjectFactory:
