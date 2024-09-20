@@ -51,5 +51,5 @@ class Rom:
 
 
 if __name__ == '__main__':
-    rom = Rom("This is a cat, a black cat.")
+    rom = Rom("This is a black cat.")
     print(rom.get_relation_matrix())
