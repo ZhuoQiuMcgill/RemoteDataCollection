@@ -1,10 +1,12 @@
 from NLPModelSingleton import *
+from RomParser import *
 from RomObject import *
 from RuleConstructor import *
 
 
 class Rom:
     def __init__(self, sentence):
+        self._id = None
         self.model = NLPModelSingleton.get_instance()
         self.rc = RuleConstructor.get_instance()
         self.sentence = sentence
@@ -22,6 +24,19 @@ class Rom:
 
     def __repr__(self):
         return self.__str__()
+
+    def set_id(self, ID):
+        self._id = ID
+        for i, obj in enumerate(self.objects):
+            obj.set_id(self._id + RomParser.pad_with_zeros(i, 2))
+
+    def get_id(self):
+        if self._id is None:
+            return "None"
+        return self._id
+
+    def get_objects(self):
+        return self.objects
 
     def create_objects_from_sentence(self, sentence):
         doc = self.model.nlp(sentence)

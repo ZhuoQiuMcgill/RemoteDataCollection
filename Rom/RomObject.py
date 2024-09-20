@@ -14,6 +14,7 @@ class RomObject:
         self._text = token.text
         self._pos = token.pos_
         self._dep = token.dep_
+        self._id = None
         self.relation_set = set()
         self._is_destroyed = False
 
@@ -25,6 +26,12 @@ class RomObject:
 
     def __repr__(self):
         return self.__str__()
+
+    def set_id(self, ID):
+        self._id = ID
+
+    def get_id(self):
+        return self._id
 
     def get_text(self):
         """
