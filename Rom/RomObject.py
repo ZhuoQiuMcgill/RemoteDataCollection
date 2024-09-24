@@ -1,4 +1,4 @@
-from Relation import Relation, RelationType
+from Rom.Relation import Relation, RelationType
 
 
 class RomObject:
@@ -60,6 +60,9 @@ class RomObject:
         """
         return len(self.relation_set)
 
+    def get_relations(self):
+        return self.relation_set
+
     def remove_relation(self, relation):
         """
         Removes a relation from the object's relation set and destroys it.
@@ -109,10 +112,6 @@ class RomObject:
         This method iterates through all relations associated with the object, destroys each of them,
         and then marks the object itself as destroyed by setting the `_is_destroyed` attribute to True.
         """
-        remove_set = set(self.relation_set)
-        for rel in remove_set:
-            rel.destroy()
-
         self._is_destroyed = True
 
     def is_destroyed(self):
@@ -159,3 +158,25 @@ class RomObjectFactory:
             to_obj.add_relation(relation)
         except Exception as e:
             print(e)
+
+    @staticmethod
+    def merge_into_one_obj(from_obj: RomObject, to_obj: RomObject):
+        for rel in from_obj.get_relations():
+            rel.replace(from_obj, to_obj)
+        from_obj.destroy()
+
+    @staticmethod
+    def merge(obj_list):
+        head = obj_list[0]
+        for to_obj in obj_list:
+            for from_obj in obj_list:
+                if from_obj is to_obj or from_obj.is_destroyed() or to_obj.is_destroyed():
+                    continue
+                if from_obj.get_text().lower() == to_obj.get_text().lower():
+                    RomObjectFactory.merge_into_one_obj(from_obj, to_obj)
+        new_obj_list = [obj for obj in obj_list if not obj.is_destroyed()]
+        for obj in new_obj_list:
+            if obj is head:
+                continue
+            RomObjectFactory.connect(obj, head, RelationType.EqualRelation)
+

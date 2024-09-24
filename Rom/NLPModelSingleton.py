@@ -24,7 +24,8 @@ class NLPModelSingleton:
         if cls._instance is None:
             cls._instance = super(NLPModelSingleton, cls).__new__(cls)
             cls._nlp = spacy.load("en_core_web_sm")
-            cls._nlp.add_pipe('coreferee')
+            if 'coreferee' not in cls._nlp.pipe_names:
+                cls._nlp.add_pipe('coreferee', last=True)
         return cls._instance
 
     @staticmethod
@@ -58,16 +59,39 @@ class NLPModelSingleton:
             doc (spacy.tokens.Doc): The parsed document containing coreferences.
 
         Returns:
-            list of list: A list containing lists of tokens that share the same coreference group.
+            list of list: A list containing lists of tokens that share the same coreference group,
+                          with PROPN or NOUN tokens placed first if present.
         """
         coref_clusters = []  # To store all coreference groups
 
-        # Check if coreferences are detected
-        if not doc._.has_coref:
+        # Check if coreference chains exist
+        if not doc._.coref_chains:
             return coref_clusters
 
-        for cluster in doc._.coref_clusters:
-            coref_group = [mention.text for mention in cluster.mentions]
-            coref_clusters.append(coref_group)
+        # Iterate over each coreference chain
+        for chain in doc._.coref_chains:
+            chain_tokens = []  # To store tokens for the current chain
+            nouns = []  # List to store PROPN or NOUN tokens
+            others = []  # List to store other tokens
+
+            # Iterate over each mention in the chain
+            for mention in chain:
+                # Extract tokens using indexes from mention
+                tokens = [doc[i] for i in mention]
+                # Separate PROPN/NOUN tokens and other tokens
+                for token in tokens:
+                    if token.pos_ in {"PROPN", "NOUN"}:
+                        nouns.append(token)
+                    else:
+                        others.append(token)
+
+            # Combine nouns first, followed by other tokens
+            chain_tokens.extend(nouns + others)
+            # Add the current chain list to the overall list
+            coref_clusters.append(chain_tokens)
 
         return coref_clusters
+
+
+
+

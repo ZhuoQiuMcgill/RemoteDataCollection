@@ -1,7 +1,9 @@
-from NLPModelSingleton import *
-from RomParser import *
-from RomObject import *
-from RuleConstructor import *
+from Rom.NLPModelSingleton import NLPModelSingleton
+from Rom.Relation import RelationType
+from Rom.RomObject import RomObject, RomObjectFactory
+from Rom.RomParser import RomParser
+from Rom.RuleConstructor import RuleConstructor
+from tabulate import tabulate
 
 
 class Rom:
@@ -16,6 +18,7 @@ class Rom:
         self.doc = None
         self.create_objects_from_sentence(self.sentence)
         self.create_relation_from_object()
+        self.self_merging()
 
     def __str__(self):
         result = '-' * 50 + f'\nSentence: {self.sentence}\n'
@@ -67,21 +70,56 @@ class Rom:
             if relation_type is not RelationType.NONE:
                 RomObjectFactory.connect(from_obj, to_obj, relation_type)
 
+    def update_relational_matrix(self):
+        matrix = [[0] * len(self.objects) for _ in range(len(self.objects))]
+        for i, obj1 in enumerate(self.objects):
+            for j, obj2 in enumerate(self.objects):
+                matrix[i][j] = int(obj1.find_relation_with(obj2))
+        self.relational_matrix = matrix
+
     def get_relational_matrix(self):
         if self.relational_matrix is None:
-            matrix = [[0] * len(self.objects) for _ in range(len(self.objects))]
-            for i, obj1 in enumerate(self.objects):
-                for j, obj2 in enumerate(self.objects):
-                    matrix[i][j] = int(obj1.find_relation_with(obj2))
-            self.relational_matrix = matrix
-            return matrix
+            self.update_relational_matrix()
         return self.relational_matrix
+
+    def clear_destroyed_object(self):
+        destroyed_set = set()
+
+        for obj in self.objects:
+            if obj.is_destroyed():
+                destroyed_set.add(obj)
+
+        self.objects = [obj for obj in self.objects if obj not in destroyed_set]
+
+        for token, obj in list(self.object_map.items()):
+            if obj in destroyed_set:
+                del self.object_map[token]
 
     def self_merging(self):
         if self.doc is None:
             print(f'Error in Rom.self_merging: self.doc is None')
             return
 
+        for cluster in NLPModelSingleton.extract_coreference_groups(self.doc):
+            RomObjectFactory.merge([self.object_map[token] for token in cluster])
+        self.clear_destroyed_object()
+        self.update_relational_matrix()
+
+    def print_matrix(self):
+        """
+        Prints the relational matrix in a tabular format in the console.
+        Uses object.get_text() to fetch the text for each object in the table.
+        """
+        headers = [""] + [obj.get_text() for obj in self.objects]
+
+        matrix = []
+        for i, row in enumerate(self.relational_matrix):
+
+            row_header = self.objects[i].get_text()
+
+            matrix.append([row_header] + row)
+
+        print(tabulate(matrix, headers=headers, tablefmt="grid"))
 
 
 class RomComposite:

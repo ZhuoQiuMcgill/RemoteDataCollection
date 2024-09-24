@@ -138,3 +138,15 @@ class Relation:
             self.from_object.remove_relation(self)
         if self.to_object:
             self.to_object.remove_relation(self)
+
+    def replace(self, original_obj, replace_obj):
+        if original_obj is self.from_object:
+            self.from_object = replace_obj
+        elif original_obj is self.to_object:
+            self.to_object = replace_obj
+        else:
+            return
+
+        if self.from_object is self.to_object:
+            self.destroy()
+

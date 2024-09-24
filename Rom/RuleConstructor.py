@@ -1,5 +1,20 @@
 import csv
-from Relation import RelationType
+import os
+from Rom.Relation import RelationType
+
+
+def get_rules_csv_path():
+    """
+    Returns the absolute path to the 'rules.csv' file located in the Rom folder of the project.
+
+    Returns:
+        str: The absolute path to 'rules.csv'.
+    """
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(current_dir, ".."))  # 上一级目录为根目录
+    rules_csv_path = os.path.join(project_root, "Rom", "rules.csv")
+
+    return rules_csv_path
 
 
 class RuleConstructor:
@@ -46,7 +61,7 @@ class RuleConstructor:
             print(e)
 
     @staticmethod
-    def get_instance(filename='rules.csv'):
+    def get_instance(filename=get_rules_csv_path()):
         """
         Retrieves the singleton instance of RuleConstructor, creating it if necessary.
 
