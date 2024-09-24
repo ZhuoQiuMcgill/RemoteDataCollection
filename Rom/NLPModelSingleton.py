@@ -1,4 +1,5 @@
 import spacy
+import coreferee
 
 
 class NLPModelSingleton:
@@ -23,6 +24,7 @@ class NLPModelSingleton:
         if cls._instance is None:
             cls._instance = super(NLPModelSingleton, cls).__new__(cls)
             cls._nlp = spacy.load("en_core_web_sm")
+            cls._nlp.add_pipe('coreferee')
         return cls._instance
 
     @staticmethod
@@ -47,6 +49,25 @@ class NLPModelSingleton:
         """
         return self._nlp
 
+    @staticmethod
+    def extract_coreference_groups(doc):
+        """
+        Extracts coreference groups from the given doc and organizes tokens into separate lists for each group.
 
-if __name__ == '__main__':
-    model = NLPModelSingleton.get_instance()
+        Args:
+            doc (spacy.tokens.Doc): The parsed document containing coreferences.
+
+        Returns:
+            list of list: A list containing lists of tokens that share the same coreference group.
+        """
+        coref_clusters = []  # To store all coreference groups
+
+        # Check if coreferences are detected
+        if not doc._.has_coref:
+            return coref_clusters
+
+        for cluster in doc._.coref_clusters:
+            coref_group = [mention.text for mention in cluster.mentions]
+            coref_clusters.append(coref_group)
+
+        return coref_clusters

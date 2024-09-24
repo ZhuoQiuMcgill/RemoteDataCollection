@@ -37,6 +37,7 @@ class RomParser:
 
     @staticmethod
     def relation_to_dict(relation, rom_name):
+
         pass
 
     @staticmethod
