@@ -1,0 +1,338 @@
+{
+    "objects": [
+        {
+            "name": "object_00",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "Although",
+            "class": "SCONJ",
+            "node_id": "t000",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_01",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "he",
+            "class": "PRON",
+            "node_id": "t001",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_02",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "was",
+            "class": "AUX",
+            "node_id": "t002",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_03",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "very",
+            "class": "ADV",
+            "node_id": "t003",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_04",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "busy",
+            "class": "ADJ",
+            "node_id": "t004",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_05",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "with",
+            "class": "ADP",
+            "node_id": "t005",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_06",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "his",
+            "class": "PRON",
+            "node_id": "t006",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_07",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "work",
+            "class": "NOUN",
+            "node_id": "t007",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_08",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "Peter",
+            "class": "PROPN",
+            "node_id": "t008",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_09",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "had",
+            "class": "AUX",
+            "node_id": "t009",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_10",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "had",
+            "class": "VERB",
+            "node_id": "t010",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_11",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "enough",
+            "class": "ADJ",
+            "node_id": "t011",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_12",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "of",
+            "class": "ADP",
+            "node_id": "t012",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_13",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "it",
+            "class": "PRON",
+            "node_id": "t013",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_14",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "He",
+            "class": "PRON",
+            "node_id": "t014",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_15",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "loves",
+            "class": "VERB",
+            "node_id": "t015",
+            "iswrong": "False",
+            "sentence": ""
+        },
+        {
+            "name": "object_16",
+            "rom_name": "text1",
+            "romnum": "rom0",
+            "type": "RomObject",
+            "text": "cat",
+            "class": "NOUN",
+            "node_id": "t016",
+            "iswrong": "False",
+            "sentence": ""
+        }
+    ],
+    "relations": [
+        {
+            "rom_name": "text1",
+            "f_object": "t002",
+            "t_object": "t010",
+            "type": "5",
+            "name": "FFt002t010",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t001",
+            "t_object": "t002",
+            "type": "5",
+            "name": "FFt001t002",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t009",
+            "t_object": "t010",
+            "type": "5",
+            "name": "FFt009t010",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t004",
+            "t_object": "t002",
+            "type": "5",
+            "name": "FFt004t002",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t013",
+            "t_object": "t007",
+            "type": "2",
+            "name": "FFt013t007",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t011",
+            "t_object": "t010",
+            "type": "5",
+            "name": "FFt011t010",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t003",
+            "t_object": "t004",
+            "type": "5",
+            "name": "FFt003t004",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t012",
+            "t_object": "t011",
+            "type": "5",
+            "name": "FFt012t011",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t016",
+            "t_object": "t015",
+            "type": "5",
+            "name": "FFt016t015",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t013",
+            "t_object": "t012",
+            "type": "5",
+            "name": "FFt013t012",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t001",
+            "t_object": "t008",
+            "type": "2",
+            "name": "FFt001t008",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t005",
+            "t_object": "t004",
+            "type": "5",
+            "name": "FFt005t004",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t007",
+            "t_object": "t005",
+            "type": "5",
+            "name": "FFt007t005",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t006",
+            "t_object": "t008",
+            "type": "2",
+            "name": "FFt006t008",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t006",
+            "t_object": "t007",
+            "type": "5",
+            "name": "FFt006t007",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t000",
+            "t_object": "t002",
+            "type": "5",
+            "name": "FFt000t002",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t014",
+            "t_object": "t015",
+            "type": "5",
+            "name": "FFt014t015",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t008",
+            "t_object": "t010",
+            "type": "5",
+            "name": "FFt008t010",
+            "romnum": "rom0"
+        }
+    ],
+    "text": "Although he was very busy with his work, Peter had had enough of it. He loves cat."
+}

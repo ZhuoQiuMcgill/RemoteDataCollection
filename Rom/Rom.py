@@ -6,28 +6,12 @@ from Rom.RuleConstructor import RuleConstructor
 from tabulate import tabulate
 
 
-class Rom:
-    sympos = ["PUNCT", "SYM", "X"]
-
-    def __init__(self, sentence):
+class BaseRom:
+    def __init__(self):
         self._id = None
-        self.sentence = sentence
         self.objects = []
         self.object_map = {}
         self.relational_matrix = None
-        self.doc = None
-        self.create_objects_from_sentence(self.sentence)
-        self.create_relation_from_object()
-        self.self_merging()
-
-    def __str__(self):
-        result = '-' * 50 + f'\nSentence: {self.sentence}\n'
-        for obj in self.objects:
-            result += str(obj)
-        return result + '\n'
-
-    def __repr__(self):
-        return self.__str__()
 
     def set_id(self, ID):
         self._id = ID
@@ -42,6 +26,67 @@ class Rom:
     def get_objects(self):
         return self.objects
 
+    def update_relational_matrix(self):
+        matrix = [[0] * len(self.objects) for _ in range(len(self.objects))]
+        for i, obj1 in enumerate(self.objects):
+            for j, obj2 in enumerate(self.objects):
+                matrix[i][j] = int(obj1.find_relation_with(obj2))
+        self.relational_matrix = matrix
+
+    def get_relational_matrix(self):
+        if self.relational_matrix is None:
+            self.update_relational_matrix()
+        return self.relational_matrix
+
+    def print_matrix(self):
+        """
+        Prints the relational matrix in a tabular format in the console.
+        Uses object.get_text() to fetch the text for each object in the table.
+        """
+        headers = [""] + [obj.get_text() for obj in self.objects]
+
+        matrix = []
+        for i, row in enumerate(self.relational_matrix):
+            row_header = self.objects[i].get_text()
+
+            matrix.append([row_header] + row)
+
+        print(tabulate(matrix, headers=headers, tablefmt="grid"))
+
+    def clear_destroyed_object(self):
+        destroyed_set = set()
+
+        for obj in self.objects:
+            if obj.is_destroyed():
+                destroyed_set.add(obj)
+
+        self.objects = [obj for obj in self.objects if obj not in destroyed_set]
+
+        for token, obj in list(self.object_map.items()):
+            if obj in destroyed_set:
+                del self.object_map[token]
+
+
+class Rom(BaseRom):
+    sympos = ["PUNCT", "SYM", "X"]
+
+    def __init__(self, sentence):
+        super().__init__()
+        self.sentence = sentence
+        self.doc = None
+        self.create_objects_from_sentence(self.sentence)
+        self.create_relation_from_object()
+        self.self_merging()
+
+    def __str__(self):
+        result = '-' * 50 + f'\nSentence: {self.sentence}\n'
+        for obj in self.objects:
+            result += str(obj)
+        return result + '\n'
+
+    def __repr__(self):
+        return self.__str__()
+
     def get_sentence(self):
         return self.sentence
 
@@ -54,7 +99,6 @@ class Rom:
     def create_objects_from_sentence(self, sentence):
         self.doc = NLPModelSingleton.get_instance().nlp(sentence)
         for token in self.doc:
-            # print(f'Text: {token.text},\tPOS: {token.pos_},\tDEP: {token.dep_},\tHead: {token.head.text}')
             if token.pos_ not in Rom.sympos:
                 romObj = RomObject(token)
                 self.objects.append(romObj)
@@ -70,31 +114,6 @@ class Rom:
             if relation_type is not RelationType.NONE:
                 RomObjectFactory.connect(from_obj, to_obj, relation_type)
 
-    def update_relational_matrix(self):
-        matrix = [[0] * len(self.objects) for _ in range(len(self.objects))]
-        for i, obj1 in enumerate(self.objects):
-            for j, obj2 in enumerate(self.objects):
-                matrix[i][j] = int(obj1.find_relation_with(obj2))
-        self.relational_matrix = matrix
-
-    def get_relational_matrix(self):
-        if self.relational_matrix is None:
-            self.update_relational_matrix()
-        return self.relational_matrix
-
-    def clear_destroyed_object(self):
-        destroyed_set = set()
-
-        for obj in self.objects:
-            if obj.is_destroyed():
-                destroyed_set.add(obj)
-
-        self.objects = [obj for obj in self.objects if obj not in destroyed_set]
-
-        for token, obj in list(self.object_map.items()):
-            if obj in destroyed_set:
-                del self.object_map[token]
-
     def self_merging(self):
         if self.doc is None:
             print(f'Error in Rom.self_merging: self.doc is None')
@@ -105,44 +124,21 @@ class Rom:
         self.clear_destroyed_object()
         self.update_relational_matrix()
 
-    def print_matrix(self):
-        """
-        Prints the relational matrix in a tabular format in the console.
-        Uses object.get_text() to fetch the text for each object in the table.
-        """
-        headers = [""] + [obj.get_text() for obj in self.objects]
 
-        matrix = []
-        for i, row in enumerate(self.relational_matrix):
-
-            row_header = self.objects[i].get_text()
-
-            matrix.append([row_header] + row)
-
-        print(tabulate(matrix, headers=headers, tablefmt="grid"))
-
-
-class RomComposite:
+class RomComposite(BaseRom):
     def __init__(self, rom_list):
+        super().__init__()
         self.roms = rom_list
         self.sentences = " ".join([rom.get_sentence() for rom in self.roms])
-        self.objects = []
-        self.object_map = {}
         for rom in self.roms:
-            for obj in rom.get_objects():
-                self.objects.append(obj)
-            for token in rom.object_map:
-                self.object_map[token] = rom.object_map[token]
-        self.relational_matrix = None
+            self.objects.extend(rom.get_objects())
+            self.object_map.update(rom.object_map)
 
     def __str__(self):
         return "\n".join(str(rom) for rom in self.roms)
 
     def __repr__(self):
         return self.__str__()
-
-    def get_objects(self):
-        return self.objects
 
     def get_sentence(self):
         return self.sentences
@@ -155,10 +151,8 @@ class RomComposite:
             result += "."
         return result.strip()
 
-
-if __name__ == '__main__':
-    rom1 = Rom("This is a cat.")
-    rom2 = Rom("This is a dog.")
-
-    compositeRom = RomComposite([rom1, rom2])
-    print(rom1.get_relational_matrix())
+    def add_rom(self, rom):
+        self.objects.extend(rom.get_objects())
+        self.object_map.update(rom.object_map)
+        self.sentences += " " + rom.get_sentence()
+        self.update_relational_matrix()
