@@ -4,6 +4,7 @@ from Rom.RomObject import RomObject, RomObjectFactory
 from Rom.RomParser import RomParser
 from Rom.RuleConstructor import RuleConstructor
 from tabulate import tabulate
+import config
 
 
 class BaseRom:
@@ -76,7 +77,8 @@ class Rom(BaseRom):
         self.doc = None
         self.create_objects_from_sentence(self.sentence)
         self.create_relation_from_object()
-        self.self_merging()
+        if config.ENABLE_SELF_MERGING:
+            self.self_merging()
 
     def __str__(self):
         result = '-' * 50 + f'\nSentence: {self.sentence}\n'
@@ -90,10 +92,10 @@ class Rom(BaseRom):
     def get_sentence(self):
         return self.sentence
 
-    def get_indexed_token(self):
+    def get_indexed_token(self, external_index=0):
         result = ""
         for i, obj in enumerate(self.objects):
-            result += f' {obj.get_text()}-({0},{i})'
+            result += f' {obj.get_text()}-({external_index},{i})'
         return result.strip() + "."
 
     def create_objects_from_sentence(self, sentence):
