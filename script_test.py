@@ -1,7 +1,7 @@
+from Rom.NLPModelSingleton import NLPModelSingleton
 from Rom.Rom import Rom, RomComposite
 from Rom.RomParser import RomParser
+from Rom.tests import Rom_test
 
-rom1 = Rom('Although he was very busy with his work, Peter had had enough of it.')
-rom2 = Rom('He loves cat.')
-rom = RomComposite([rom1, rom2])
-print(RomParser.save_as_json(rom))
+Rom_test.run_test()
+

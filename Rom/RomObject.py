@@ -180,3 +180,4 @@ class RomObjectFactory:
                 continue
             RomObjectFactory.connect(obj, head, RelationType.EqualRelation)
 
+

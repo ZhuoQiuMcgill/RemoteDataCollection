@@ -11,7 +11,7 @@ def get_rules_csv_path():
         str: The absolute path to 'rules.csv'.
     """
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.abspath(os.path.join(current_dir, ".."))  # 上一级目录为根目录
+    project_root = os.path.abspath(os.path.join(current_dir, ".."))
     rules_csv_path = os.path.join(project_root, "Rom", "rules.csv")
 
     return rules_csv_path
@@ -96,7 +96,4 @@ class RuleConstructor:
         return RelationType(0)
 
 
-if __name__ == '__main__':
-    rc = RuleConstructor.get_instance()
-    relation = rc.get_relation_by_dep('acl')
-    print(int(relation))
+

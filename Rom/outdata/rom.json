@@ -191,102 +191,6 @@
     "relations": [
         {
             "rom_name": "text1",
-            "f_object": "t002",
-            "t_object": "t010",
-            "type": "5",
-            "name": "FFt002t010",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t001",
-            "t_object": "t002",
-            "type": "5",
-            "name": "FFt001t002",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t009",
-            "t_object": "t010",
-            "type": "5",
-            "name": "FFt009t010",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t004",
-            "t_object": "t002",
-            "type": "5",
-            "name": "FFt004t002",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t013",
-            "t_object": "t007",
-            "type": "2",
-            "name": "FFt013t007",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t011",
-            "t_object": "t010",
-            "type": "5",
-            "name": "FFt011t010",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t003",
-            "t_object": "t004",
-            "type": "5",
-            "name": "FFt003t004",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t012",
-            "t_object": "t011",
-            "type": "5",
-            "name": "FFt012t011",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t016",
-            "t_object": "t015",
-            "type": "5",
-            "name": "FFt016t015",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t013",
-            "t_object": "t012",
-            "type": "5",
-            "name": "FFt013t012",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t001",
-            "t_object": "t008",
-            "type": "2",
-            "name": "FFt001t008",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
-            "f_object": "t005",
-            "t_object": "t004",
-            "type": "5",
-            "name": "FFt005t004",
-            "romnum": "rom0"
-        },
-        {
-            "rom_name": "text1",
             "f_object": "t007",
             "t_object": "t005",
             "type": "5",
@@ -311,10 +215,66 @@
         },
         {
             "rom_name": "text1",
-            "f_object": "t000",
+            "f_object": "t013",
+            "t_object": "t007",
+            "type": "2",
+            "name": "FFt013t007",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t013",
+            "t_object": "t012",
+            "type": "5",
+            "name": "FFt013t012",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t001",
+            "t_object": "t008",
+            "type": "2",
+            "name": "FFt001t008",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t003",
+            "t_object": "t004",
+            "type": "5",
+            "name": "FFt003t004",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t008",
+            "t_object": "t010",
+            "type": "5",
+            "name": "FFt008t010",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t004",
             "t_object": "t002",
             "type": "5",
-            "name": "FFt000t002",
+            "name": "FFt004t002",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t005",
+            "t_object": "t004",
+            "type": "5",
+            "name": "FFt005t004",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t009",
+            "t_object": "t010",
+            "type": "5",
+            "name": "FFt009t010",
             "romnum": "rom0"
         },
         {
@@ -327,10 +287,50 @@
         },
         {
             "rom_name": "text1",
-            "f_object": "t008",
+            "f_object": "t011",
             "t_object": "t010",
             "type": "5",
-            "name": "FFt008t010",
+            "name": "FFt011t010",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t016",
+            "t_object": "t015",
+            "type": "5",
+            "name": "FFt016t015",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t002",
+            "t_object": "t010",
+            "type": "5",
+            "name": "FFt002t010",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t012",
+            "t_object": "t011",
+            "type": "5",
+            "name": "FFt012t011",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t000",
+            "t_object": "t002",
+            "type": "5",
+            "name": "FFt000t002",
+            "romnum": "rom0"
+        },
+        {
+            "rom_name": "text1",
+            "f_object": "t001",
+            "t_object": "t002",
+            "type": "5",
+            "name": "FFt001t002",
             "romnum": "rom0"
         }
     ],

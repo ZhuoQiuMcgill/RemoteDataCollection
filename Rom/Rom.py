@@ -126,8 +126,10 @@ class Rom(BaseRom):
 
 
 class RomComposite(BaseRom):
-    def __init__(self, rom_list):
+    def __init__(self, rom_list=None):
         super().__init__()
+        if rom_list is None:
+            rom_list = []
         self.roms = rom_list
         self.sentences = " ".join([rom.get_sentence() for rom in self.roms])
         for rom in self.roms:
@@ -152,7 +154,32 @@ class RomComposite(BaseRom):
         return result.strip()
 
     def add_rom(self, rom):
+        self.roms.append(rom)
         self.objects.extend(rom.get_objects())
         self.object_map.update(rom.object_map)
         self.sentences += " " + rom.get_sentence()
         self.update_relational_matrix()
+
+    def pop_rom(self):
+        if not self.roms:
+            print("Error in RomComposite.pop_rom(): No ROMs to pop.")
+            return None
+
+        first_rom = self.roms.pop(0)
+
+        # Remove associated objects and update the object map
+        objects_to_remove = set(first_rom.get_objects())
+        self.objects = [obj for obj in self.objects if obj not in objects_to_remove]
+
+        # Update the object map by removing relevant tokens
+        tokens_to_remove = {token for token, obj in self.object_map.items() if obj in objects_to_remove}
+        for token in tokens_to_remove:
+            del self.object_map[token]
+
+        sentences_list = NLPModelSingleton.split_into_sentences(self.sentences)
+        self.sentences = " ".join(sentences_list[1:]).strip()
+
+        # Update the relational matrix after changes
+        self.update_relational_matrix()
+
+        return first_rom

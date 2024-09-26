@@ -26,6 +26,7 @@ class NLPModelSingleton:
             cls._nlp = spacy.load("en_core_web_sm")
             if 'coreferee' not in cls._nlp.pipe_names:
                 cls._nlp.add_pipe('coreferee', last=True)
+            print(f'Spacy load model success! Current pipe names: {cls._nlp.pipe_names}')
         return cls._instance
 
     @staticmethod
@@ -92,6 +93,20 @@ class NLPModelSingleton:
 
         return coref_clusters
 
+    @staticmethod
+    def split_into_sentences(text):
+        """
+        Splits the given text into a list of sentences with minimal processing.
 
+        Args:
+            text (str): The input text to be split into sentences.
 
+        Returns:
+            list: A list of sentences extracted from the input text.
+        """
+        nlp = spacy.blank("en")
+        nlp.add_pipe("sentencizer")
 
+        doc = nlp(text)
+        sentences = [sent.text for sent in doc.sents]
+        return sentences
